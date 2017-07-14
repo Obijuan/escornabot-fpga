@@ -28,7 +28,27 @@
           },
           "position": {
             "x": 328,
-            "y": 136
+            "y": 72
+          }
+        },
+        {
+          "id": "783db12e-97ed-4910-b43f-5bbdcc874ce8",
+          "type": "basic.input",
+          "data": {
+            "name": "ctn",
+            "pins": [
+              {
+                "index": "0",
+                "name": "",
+                "value": "0"
+              }
+            ],
+            "virtual": true,
+            "clock": false
+          },
+          "position": {
+            "x": 328,
+            "y": 184
           }
         },
         {
@@ -53,7 +73,7 @@
           },
           "position": {
             "x": 864,
-            "y": 168
+            "y": 184
           }
         },
         {
@@ -73,19 +93,22 @@
           },
           "position": {
             "x": 328,
-            "y": 224
+            "y": 296
           }
         },
         {
           "id": "b5ac0df0-dfb8-4bfd-8ae7-f6d61ecc0209",
           "type": "basic.code",
           "data": {
-            "code": "reg [1:0] q;\n\nalways @(posedge clk)\n  if (up)\n    q <= q + 1;\n  else\n    q <= q - 1;",
+            "code": "reg [1:0] q;\n\nalways @(posedge clk)\n  if (ctn)\n    if (up)\n      q <= q + 1;\n    else\n      q <= q - 1;",
             "params": [],
             "ports": {
               "in": [
                 {
                   "name": "clk"
+                },
+                {
+                  "name": "ctn"
                 },
                 {
                   "name": "up"
@@ -106,7 +129,7 @@
           },
           "size": {
             "width": 240,
-            "height": 128
+            "height": 160
           }
         }
       ],
@@ -141,15 +164,25 @@
             "port": "in"
           },
           "size": 2
+        },
+        {
+          "source": {
+            "block": "783db12e-97ed-4910-b43f-5bbdcc874ce8",
+            "port": "out"
+          },
+          "target": {
+            "block": "b5ac0df0-dfb8-4bfd-8ae7-f6d61ecc0209",
+            "port": "ctn"
+          }
         }
       ]
     },
     "state": {
       "pan": {
-        "x": 127.4603,
-        "y": 255.8143
+        "x": -194,
+        "y": 51.5
       },
-      "zoom": 1.2473
+      "zoom": 1
     }
   },
   "dependencies": {}
